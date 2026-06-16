@@ -74,11 +74,8 @@ threat-intelligence-pipeline/
 │
 ├── main.py
 ├── real_network_monitor.py
-├── api.py
 ├── requirements.txt
 ├── install.sh
-├── Dockerfile
-├── docker-compose.yml
 ├── README.md
 │
 ├── data/
@@ -310,7 +307,7 @@ This project provided practical knowledge in:
 | Thirumoorthy K | Developer |
 | Manojkumar K | Developer |
 
-Guide: Ms. J. Rini Angeline Vinisha
+
 
 ---
 
