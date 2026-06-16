@@ -1,78 +1,323 @@
 # 🛡️ Automated Cyber Threat Intelligence Pipeline
 
-### Real-time Network Monitoring for SOC Operations
+A Python-based Cyber Threat Intelligence (CTI) system that collects, processes, enriches, and monitors Indicators of Compromise (IOCs) in real time using network traffic analysis.
 
 ---
 
 ## 📌 Project Overview
 
-An **Automated Cyber Threat Intelligence Pipeline** that collects, processes, and enriches Indicators of Compromise (IOCs) with **Real-time Network Traffic Monitoring**. Designed for Security Operations Centers (SOCs).
+The Threat Intelligence Pipeline automates the process of collecting threat data, enriching IOCs, performing risk analysis, and detecting malicious activities from live network traffic.
+
+This project is designed for:
+
+- Security Operations Centers (SOC)
+- Threat Hunting
+- Incident Response
+- Cybersecurity Research
+
+---
+
+## 🎯 Objectives
+
+- Automate IOC collection
+- Enrich threat intelligence
+- Monitor network traffic in real time
+- Detect malicious activities
+- Generate security alerts
+- Provide API access to threat data
 
 ---
 
 ## 🚀 Features
 
-- ✅ **Automated IOC Collection** from multiple threat feeds
-- ✅ **Real-time Network Monitoring** (incoming/outgoing traffic)
-- ✅ **ICMP/Ping Detection**
-- ✅ **Port Scan Detection**
-- ✅ **Brute Force Detection**
-- ✅ **DNS Query Monitoring**
-- ✅ **Interactive Menu System**
+### Threat Intelligence
+- IOC Collection
+- IOC Enrichment
+- Threat Scoring
+- Confidence Scoring
+- Risk Analysis
+- IOC Deduplication
+
+### Network Monitoring
+- Real-time Packet Capture
+- DNS Monitoring
+- ICMP Detection
+- Port Scan Detection
+- Brute Force Detection
+- Malicious IP Detection
+
+### Security Features
+- MITRE ATT&CK Mapping
+- Threat Correlation
+- Alert Generation
+- API Access
 
 ---
 
-## 🛠️ Technology Stack
+## 🛠 Technologies Used
 
-| Component | Technology |
-|-----------|------------|
-| Language | Python 3.x |
-| Network Monitoring | Scapy, netifaces |
-| Data Format | JSON |
-| OS | Kali Linux / Ubuntu |
+| Technology | Purpose |
+|------------|---------|
+| Python | Programming Language |
+| Scapy | Packet Capture |
+| FastAPI | REST API |
+| JSON | Data Storage |
+| Netifaces | Interface Detection |
+| Linux | Deployment |
 
 ---
 
-## 📋 Quick Start
+## 📂 Project Structure
 
-### 1. Install Dependencies
+```text
+threat-intelligence-pipeline/
+│
+├── main.py
+├── real_network_monitor.py
+├── api.py
+├── requirements.txt
+├── install.sh
+├── Dockerfile
+├── docker-compose.yml
+├── README.md
+│
+├── data/
+│   ├── collected_iocs.json
+│   ├── processed_iocs.json
+│   └── .gitkeep
+│
+└── screenshots/
+```
+
+---
+
+## ⚙ Installation
+
+### Clone Repository
+
+```bash
+git clone https://github.com/thiru011/threat-intelligence-pipeline.git
+cd threat-intelligence-pipeline
+```
+
+### Create Virtual Environment
+
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
+
+### Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+Or
+
 ```bash
 chmod +x install.sh
 ./install.sh
-2. First Run (Setup Data)
-bash
+```
+
+---
+
+## ▶ Running the Project
+
+```bash
 python3 main.py
-Select Option 2 - Pull IOC Collection
+```
 
-Select Option 3 - Process & Enrich IOCs
+For packet capture:
 
-3. Start Real Network Monitoring
-bash
+```bash
 sudo python3 main.py
-Select Option 8 → Option 1 - Start REAL Monitoring
+```
 
-4. Test Detection
-bash
-ping 8.8.8.8
-curl http://google.com
-nslookup drmcet.ac.in
-📊 Menu Options
-Option	Function
-1	Quick Threat Scan
-2	Pull IOC Collection
-3	Process & Enrich IOCs
-4	Add Custom IOC
-5	View Collected Data
-6	Store Enriched Data
-7	Start API Server
-8	🌐 LIVE NETWORK ANALYSIS
-9	System Status
-10	Help & Documentation
-11	Exit
-🔍 Network Monitoring Features
-Detection Type	Description
-Malicious IP	Traffic to/from known malicious IPs
-Malicious Domain	DNS queries to malicious domains
-ICMP/Ping	Ping requests to malicious IPs
-Port Scan	Port scanning activities
-Brute Force	Brute force attempts on services
+---
+
+## 🌐 API Server
+
+Run API:
+
+```bash
+uvicorn api:app --reload
+```
+
+Open:
+
+```text
+http://localhost:8000
+http://localhost:8000/docs
+```
+
+---
+
+## 📡 Threat Detection Workflow
+
+```text
+Threat Feeds
+     ↓
+IOC Collection
+     ↓
+IOC Processing
+     ↓
+Threat Enrichment
+     ↓
+Risk Scoring
+     ↓
+Storage
+     ↓
+Network Monitoring
+     ↓
+Threat Detection
+     ↓
+Alert Generation
+```
+
+---
+
+## 🏗 System Architecture
+
+```text
++------------------+
+| Threat Feeds     |
+| OTX / URLHaus    |
++------------------+
+          |
+          v
++------------------+
+| IOC Collector    |
++------------------+
+          |
+          v
++------------------+
+| IOC Processor    |
++------------------+
+          |
+          v
++------------------+
+| Threat Enricher  |
++------------------+
+          |
+          v
++------------------+
+| Storage Layer    |
++------------------+
+          |
+          v
++------------------+
+| Network Monitor  |
++------------------+
+          |
+          v
++------------------+
+| Detection Engine |
++------------------+
+          |
+          v
++------------------+
+| Alerts & API     |
++------------------+
+```
+
+---
+
+## 🔍 Detection Techniques
+
+| Detection | Description |
+|-----------|-------------|
+| ICMP Detection | Detect suspicious ping traffic |
+| DNS Monitoring | Detect malicious domains |
+| Port Scan Detection | Detect scanning attempts |
+| Brute Force Detection | Detect login attacks |
+| Malicious IP Detection | Detect bad IPs |
+
+---
+
+## 📊 Sample Output
+
+```text
+🚨 MALICIOUS_OUTGOING:
+192.168.1.10 -> 185.220.101.132
+
+🚨 PORT_SCAN_ATTEMPT:
+192.168.1.10 -> port 22
+
+🚨 BRUTE_FORCE_ATTEMPT:
+192.168.1.15 -> SSH
+```
+
+---
+
+## 🧠 MITRE ATT&CK Mapping
+
+| Detection | MITRE ID |
+|-----------|-----------|
+| Port Scan | T1046 |
+| Brute Force | T1110 |
+| DNS Tunneling | T1071 |
+| Command & Control | T1105 |
+
+---
+
+## 🔒 Security Improvements
+
+- IOC Deduplication
+- Risk Scoring
+- Confidence Scoring
+- Exception Handling
+- Real Packet Capture
+- Threat Enrichment
+- MITRE Mapping
+
+---
+
+## 🚀 Future Enhancements
+
+- VirusTotal API Integration
+- AlienVault OTX API
+- Machine Learning Detection
+- SIEM Integration
+- Docker Deployment
+- Email Alerts
+- Database Integration
+- Wazuh Integration
+- Splunk Integration
+
+---
+
+## 📚 Learning Outcomes
+
+This project provided practical knowledge in:
+
+- Cyber Threat Intelligence
+- Threat Hunting
+- Packet Analysis
+- Python Security Automation
+- Network Monitoring
+- API Development
+- Security Analytics
+- Incident Response
+
+---
+
+## 👨‍💻 Team Members
+
+| Name | Role |
+|------|------|
+| Hariprakash P | Developer |
+| Thirumoorthy K | Developer |
+| Manojkumar K | Developer |
+
+Guide: Ms. J. Rini Angeline Vinisha
+
+---
+
+## 📜 License
+
+MIT License
+
+---
+
+⭐ Star this repository if you find it useful.
