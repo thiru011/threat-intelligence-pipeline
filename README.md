@@ -310,11 +310,22 @@ This project provided practical knowledge in:
 
 
 ---
+## 📸 Screenshots
 
-## 📜 License
+### Main Menu
+![Main Menu](screenshots/01_main_menu.png)
 
-MIT License
+### IOC Collection
+![IOC Collection](screenshots/02_ioc_collection.png)
 
----
+### Threat Detection
+![Threat Detection](screenshots/05_threat_detection.png)
+
+### Network Monitoring
+![Network Monitoring](screenshots/04_network_monitor_start.png)
+
+### Real-time Alerts
+![Real-time Alerts](screenshots/network_statistics.png)
+
 
 ⭐ Star this repository if you find it useful.
